@@ -11,12 +11,12 @@ class Transfer
   end
 
   def valid?
-    @sender.valid? && @receiver.valid?
+    @sender.valid? && @receiver.valid? && @sender.balance >= @amount
   end
 
   def execute_transaction
     # binding.pry
-    if @sender.valid? && duplicate? == false
+    if valid? && duplicate? == false
       @@all << self
       @sender.balance = @sender.balance - @amount
       @receiver.balance = @receiver.balance + @amount
