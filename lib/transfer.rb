@@ -16,7 +16,7 @@ class Transfer
   end
 
   def execute_transaction
-    binding.pry
+    # binding.pry
     if @sender.valid? && duplicate? == false
       @sender.balance = @sender.balance - @amount
       @receiver.balance = @receiver.balance + @amount
