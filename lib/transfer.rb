@@ -16,7 +16,11 @@ class Transfer
   end
 
   def execute_transaction
-
+    if @sender.valid? && duplicate? == false
+      @sender.balance = @sender.balance - @amount
+      @receiver.balance = @receiver.balance + @amount
+    else
+      "Transaction rejected. Please check your account balance."
   end
 
   def duplicate?
